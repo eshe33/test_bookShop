@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.shop.mapper.BookMapper">
+
+    <resultMap type="com.shop.entity.Book" id="BookEntityMap">
+        <id column="book_id" property="bookId"/>
+        <result column="book_name" property="bookName"/>
+        <result column="book_author" property="bookAuthor"/>
+        <result column="book_amount" property="bookAmount"/>
+        <result column="book_price" property="bookPrice"/>
+        <result column="book_type" property="bookType"/>
+        <result column="book_state" property="bookState"/>
+    </resultMap>
+
+
+</mapper>
+

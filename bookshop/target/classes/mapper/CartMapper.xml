@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.shop.mapper.CartMapper">
+
+    <resultMap type="com.shop.entity.Cart" id="CartEntityMap">
+        <id column="cart_id" property="cartId"/>
+        <result column="user_id" property="userId"/>
+        <result column="book_id" property="bookId"/>
+        <result column="book_name" property="bookName"/>
+        <result column="book_author" property="bookAuthor"/>
+        <result column="book_count" property="bookCount"/>
+        <result column="book_price" property="bookPrice"/>
+        <result column="book_type" property="bookType"/>
+    </resultMap>
+
+    <!-- 查询若干个数据id匹配的购物车列表 -->
+    <!-- List<Cart> findByCartIds(Integer[] cartIds) -->
+    <select id="findByCartIds" resultMap="CartEntityMap">
+        SELECT * FROM cart WHERE cart_id IN
+        <foreach collection="array" item="cart_id" separator="," open="(" close=")">
+            #{cart_id}
+        </foreach>
+        ORDER BY book_id DESC
+    </select>
+
+
+
+</mapper>
